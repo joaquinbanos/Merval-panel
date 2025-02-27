@@ -231,7 +231,7 @@ function App() {
         <header className="bg-white rounded-lg shadow-md p-6 mb-6 border-t-4 border-blue-600">
           <div className="flex items-center justify-center mb-2">
             <TrendingUp size={28} className="text-blue-600 mr-2" />
-            <h1 className="text-3xl font-bold text-center text-gray-800">MERVAL - Precios en Tiempo Real</h1>
+            <h1 className="text-3xl font-bold text-center text-gray-800">PANEL MERVAL</h1>
           </div>
           
           <div className="flex flex-col sm:flex-row justify-between items-center mt-4 gap-4">
@@ -277,26 +277,28 @@ function App() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {stocks.map((stock) => (
-            <div key={stock.symbol} className="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow border border-gray-100">
-              <div className="flex justify-between items-start">
-                <div>
-                  <h2 className="text-xl font-bold text-gray-800">{stock.symbol.replace('.BA', '')}</h2>
-                  <p className="text-xs text-gray-500 truncate max-w-[150px]" title={stock.name}>
-                    {stock.name}
-                  </p>
-                </div>
+            <div key={stock.symbol} className="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow border border-gray-100 overflow-hidden">           <div className="flex justify-between items-start gap-2">
+             <div className="flex-0 min-w-0">
+               <h2 className="text-xl font-bold text-gray-800 truncate">
+                 {stock.symbol.replace('.BA', '')}
+               </h2>
+               <p className="text-xs text-gray-500 truncate" title={stock.name}>
+                 {stock.name}
+               </p>
+             </div>
                 
                 {!stock.loading && stock.change !== null && (
-                  <span className={`text-sm font-medium px-2 py-1 rounded-full ${
-                    stock.change > 0 
-                      ? 'bg-green-100 text-green-800' 
-                      : stock.change < 0 
-                        ? 'bg-red-100 text-red-800' 
-                        : 'bg-gray-100 text-gray-800'
-                  }`}>
-                    {stock.change > 0 ? '+' : ''}{stock.change.toFixed(2)}%
-                  </span>
+              <span className={`text-sm font-medium px-1.5 py-0.5 rounded-full ${
+                stock.change > 0 
+                  ? 'bg-green-100 text-green-800' 
+                  : stock.change < 0 
+                    ? 'bg-red-100 text-red-800' 
+                    : 'bg-gray-100 text-gray-800'
+              } whitespace-nowrap min-w-[76px] text-center`}> {/* Cambios aquí */}
+                {stock.change > 0 ? '+' : ''}{stock.change?.toFixed(2)}%
+              </span>
                 )}
+                
               </div>
               
               {stock.loading ? (
@@ -308,7 +310,7 @@ function App() {
                 </div>
               ) : (
                 <p className="text-lg mt-3 font-medium text-gray-700">
-                  ARS ${stock.price?.toFixed(2)}
+                  ${stock.price?.toFixed(2).replace(/\.00$/, '')}
                 </p>
               )}
             </div>
