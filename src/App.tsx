@@ -288,15 +288,15 @@ function App() {
              </div>
                 
                 {!stock.loading && stock.change !== null && (
-              <span className={`text-sm font-medium px-1.5 py-0.5 rounded-full ${
-                stock.change > 0 
-                  ? 'bg-green-100 text-green-800' 
-                  : stock.change < 0 
-                    ? 'bg-red-100 text-red-800' 
-                    : 'bg-gray-100 text-gray-800'
-              } whitespace-nowrap min-w-[76px] text-center`}> {/* Cambios aquí */}
-                {stock.change > 0 ? '+' : ''}{stock.change?.toFixed(2)}%
-              </span>
+                   <span className={`text-sm font-medium px-2 py-1 rounded-full ${
+                    stock.change > 0 
+                      ? 'bg-green-100 text-green-800' 
+                      : stock.change < 0 
+                        ? 'bg-red-100 text-red-800' 
+                        : 'bg-gray-100 text-gray-800'
+                  }`}>
+                    {stock.change > 0 ? '+' : ''}{stock.change.toFixed(2)}%
+                  </span>
                 )}
                 
               </div>
