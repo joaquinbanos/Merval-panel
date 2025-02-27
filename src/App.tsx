@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { RefreshCw, AlertCircle, Info, TrendingUp } from 'lucide-react';
 
 // List of MERVAL stocks with their full names and Yahoo Finance symbols
@@ -316,7 +316,6 @@ function App() {
         </div>
         
         <footer className="mt-8 text-center text-gray-500 text-sm">
-          <p>Datos proporcionados por Yahoo Finance API</p>
           <p className="mt-1">Los precios se actualizan automáticamente cada 5 minutos</p>
           <p className="mt-1">Esta aplicación es solo para fines informativos</p>
         </footer>
